@@ -13,17 +13,23 @@ const config = {
 
 const pool = new pg.Pool(config);
 
-const queryDB = (sql, arrayData) => (
+const query = (sql, arrayData) => (
     new Promise((resolve, reject) =>{
-         pool.connect((err,client,done)=>{
-             if(err) reject(err +'');
-             client.query(sql,arrayData, (errQuery, result)=>{
-                 done(errQuery);
-                 if(errQuery) return reject(errQuery);
-                 return resolve(result);
+        pool.connect((err,client,done)=>{
+            if(err) reject(err +'');
+            client.query(sql,arrayData, (errQuery, result)=>{
+                done(errQuery);
+                if(errQuery) return reject(errQuery);
+                return resolve(result);
              })
          })
     })
+)
+
+const queryDB = async (sql, arrayData) => (
+    await query(sql, arrayData)
+    .then(result => result.rows)
+    .then(res => res)
 )
 
 // queryDB('select * from "user"',[])

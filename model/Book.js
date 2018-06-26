@@ -1,5 +1,5 @@
 import queryDB from './db';
 
-export const getAllWard = () => (
+export const getAllBook = () => (
     queryDB(`select * from "Book"`,[])
 );

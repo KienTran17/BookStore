@@ -1,3 +1,3 @@
 export const CFG = {
-    host: 'http://diphuotclient.herokuapp.com',
+    host: 'http://localhost:3000',
 }
