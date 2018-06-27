@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash/fp';
 
-import { getAllBook, addToCart } from '../../action/book';
+import { getAllBook } from '../../action/book';
+import { addToCart } from '../../action/user';
 import Rating from '../../components/Rating';
 
 class Home extends Component {
