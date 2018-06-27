@@ -1,13 +1,14 @@
 import { Enum } from './enum';
 const initState = {
-    list: {},
-    cart: [],
+    sending: '',
+    success: '',
+    error: '',
 };
 
 const user = (state ={}, action) => {
     switch (action.type) {
-        case Enum.BOOK_UPDATE_STATE:
-            return {...state, ...action.data} ;
+        case Enum.ASYNC_REQUEST_UPDATE:
+        return {...state, ...action.data} ;
         default:
         return state;
     }

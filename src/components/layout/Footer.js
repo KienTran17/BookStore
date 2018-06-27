@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 class Footer extends Component {
     render() {
         return (
-            <footer className="py-5 bg-dark">
-                <div className="container">
-                    <p className="m-0 text-center text-white">Copyright © 2018 Trung Tran</p>
-                </div>
-            </footer>
+            <div className="w3-black w3-center w3-padding-24">Powered by 
+                <a href="https://www.w3schools.com/w3css/default.asp"
+                    title="W3.CSS" target="_blank" className="w3-hover-opacity">
+                    w3.css
+                </a>
+            </div>
         );
     }
 }

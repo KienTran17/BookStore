@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash/fp';
 
-import { getAllBook } from '../../action/book';
+import { getAllBook, addToCart } from '../../action/book';
 import Rating from '../../components/Rating';
 
 class Home extends Component {
@@ -15,6 +15,10 @@ class Home extends Component {
         this.props.getAllBook();
     }
 
+    _addToCart(oneBook) {
+        this.props.addToCart(oneBook);
+    }
+
     _renderAllBook () {
         const {
             list = {},
@@ -22,22 +26,19 @@ class Home extends Component {
         return (
             !isEmpty(list) &&
             list.map((o, i) => (
-                <div key={i} className="col-lg-4 col-md-6 mb-4">
-                    <div className="card h-100">
-                        <a href="#"><img className="card-img-top" src={o.image} alt /></a>
-                        <div className="card-body">
-                            <h4 className="card-title">
-                                <a href="#">{o.name}</a>
-                            </h4>
-                            <h5 style={{ color: '#f47442' }}>{/*?= $price ?*/}</h5>
-                            <p className="card-text">{/*?= $description?*/}</p>
-                            <Rating rate={o.rate} />
+                <div key={i} className="w3-col l2 s6">
+                    <div className="w3-container">
+                        <div className="w3-display-container" style={{display: 'flex'}}>
+                        <img src={o.image} style={{width: 'auto', height: '100%', margin: 'auto'}} />
+                        <span className="w3-tag w3-display-topleft">{o.type}</span>
+                        <div className="w3-display-middle w3-display-hover">
+                            <button onClick={() => this._addToCart(o)} className="w3-button w3-black">Buy now <i className="fa fa-shopping-cart" /></button>
                         </div>
-                        <div className="card-footer">
-                            <form method="post" action="#">
-                                <button type="submit" className="btn btn-primary">Mua</button>
-                            </form>
                         </div>
+                        <p style={{ textAlign: 'center' }}>{o.name}<br />
+                        <b>${o.prices}</b> <br />
+                        <Rating rate={o.rate} />
+                        </p>
                     </div>
                 </div>
             ))
@@ -47,24 +48,11 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-3">
-                        <h1 className="my-4">Danh mục</h1>
-                        <div className="list-group">
-                            <a href="#" className="list-group-item link-dnt">Khoa học</a>
-                            <a href="#" className="list-group-item link-dnt">Kinh tế</a>
-                            <a href="#" className="list-group-item link-dnt">Giáo dục</a>
-                            <a href="index.jsp" className="list-group-item">Tất cả</a>
-                        </div>
-                    </div>
-                    <div className="col-lg-9">
-                        <div className="row">
-                            {
-                                this._renderAllBook()
-                            }
-                        </div>
-                    </div>
+            <div className="w3-main">
+                <div className="w3-row w3-grayscale">
+                    {
+                        this._renderAllBook()
+                    }
                 </div>
             </div>
         );
@@ -80,6 +68,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
     getAllBook: () =>
         dispatch(getAllBook()),
+    addToCart: (data) => dispatch(addToCart(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

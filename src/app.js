@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import { connect } from 'react-redux';
-import Home from './components/site/Home'
+import Home from './components/site/Home';
+import Loading from './components/Loading';
+
 
 function getCookie(name) {
     var value = "; " + document.cookie;
@@ -17,6 +20,11 @@ class App extends Component {
     }
 
     render() {
+        const {
+            asyncRequest: {
+                sending
+            }
+        } = this.props;
         const token = getCookie('tk');
         return (
             <BrowserRouter basename="/">
@@ -24,9 +32,9 @@ class App extends Component {
                     <header>
                         <Header isAuthen={this.props.isAuthen} />
                     </header>
-
+                    { sending && <Loading /> }
                     <Route exact path="/" render={() => <Home isAuthen={this.props.isAuthen} arrAllPlace={this.props.arrAllPlace} />} />
-                    <footer>
+                    <footer> 
                         <Footer isAuthen={this.props.isAuthen} />
                     </footer>
                 </div>
