@@ -31,7 +31,7 @@ app.use(express.static('public'));
 app.use('/api/user', userRouter);
 app.use('/api/book', bookRouter);
 
-app.get('/', (req, res) => res.render('front-end/home/index.ejs'));
-app.get('*', (req, res) => res.send('The page not found!'));
+// app.get('/', (req, res) => res.render('front-end/home/index.ejs'));
+app.get('*', (req, res) => res.render('front-end/home/index.ejs'))
 
 server.listen(process.env.PORT || '3000');

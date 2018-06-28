@@ -5,6 +5,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import { connect } from 'react-redux';
 import Home from './components/site/Home';
+import Cart from './components/site/Cart';
 import Loading from './components/Loading';
 
 
@@ -33,7 +34,8 @@ class App extends Component {
                         <Header isAuthen={this.props.isAuthen} />
                     </header>
                     { sending && <Loading /> }
-                    <Route exact path="/" render={() => <Home isAuthen={this.props.isAuthen} arrAllPlace={this.props.arrAllPlace} />} />
+                    <Route exact path="/" render={() => <Home />} />
+                    <Route path="/cart" render={() => <Cart />} />
                     <footer> 
                         <Footer isAuthen={this.props.isAuthen} />
                     </footer>

@@ -27,10 +27,10 @@ class Home extends Component {
         return (
             !isEmpty(list) &&
             list.map((o, i) => (
-                <div key={i} className="w3-col l2 s6">
+                <div key={i} className="w3-col l2 s6 main">
                     <div className="w3-container">
                         <div className="w3-display-container" style={{display: 'flex'}}>
-                        <img src={o.image} style={{width: 'auto', height: '100%', margin: 'auto'}} />
+                        <img src={o.image} style={{width: 'auto', height: '100%', margin: 'auto', maxHeight: '273px'}} />
                         <span className="w3-tag w3-display-topleft">{o.type}</span>
                         <div className="w3-display-middle w3-display-hover">
                             <button onClick={() => this._addToCart(o)} className="w3-button w3-black">Buy now <i className="fa fa-shopping-cart" /></button>
@@ -50,7 +50,7 @@ class Home extends Component {
     render() {
         return (
             <div className="w3-main">
-                <div className="w3-row w3-grayscale">
+                <div className="w3-row w3-grayscale container">
                     {
                         this._renderAllBook()
                     }

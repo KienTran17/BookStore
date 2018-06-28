@@ -8,4 +8,6 @@ export const Enum = {
     
     // async request
     ASYNC_REQUEST_UPDATE: 'ASYNC_REQUEST_UPDATE',
+
+    UPDATE_SWITCHER: 'UPDATE_SWITCHER',
 }
