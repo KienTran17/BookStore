@@ -22,7 +22,7 @@ class Home extends Component {
             <div className="w3-main">
                 <div className="w3-row w3-grayscale">
                     <div className="row">
-                        <div className="col-60">
+                        <div className="col-50">
                             <div className="container">
                                 <form action="/action_page.php">
                                     <div className="row">
@@ -60,7 +60,7 @@ class Home extends Component {
                                 </form>
                             </div>
                         </div>
-                        <div className="col-40">
+                        <div className="col-25">
                             <div className="container">
                                 <h4>Cart</h4>
                                 {

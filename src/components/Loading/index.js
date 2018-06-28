@@ -10,12 +10,12 @@ class Loading extends Component {
                 position: 'absolute',
                 width: '100%',
                 height: '100%',
-                background: '#f54',
+                background: 'rgba(75, 80, 68, 0.61)',
                 zIndex: 999,
                 display: 'flex',
                 justifyContent: 'center',
             }}>
-                <ReactLoading type="bubbles" color="#000" height={300} width={300} /> 
+                <ReactLoading type="bubbles" color="red" height={300} width={300} /> 
             </div>
         );
     }
